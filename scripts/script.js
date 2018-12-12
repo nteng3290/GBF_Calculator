@@ -6,20 +6,20 @@ const pool = [
 const weight = [
     0.82, 0.15, 0.03
 ]
+const rateUp = [
+    0, 0.97, 0.03
+]
 //Weighted Random Number Generation
 //1 roll R 82%; SR 15%; SSR 3%;
 // In a 10 roll, the last item is 97%SR/3%SSR
 const weightedList = function(pool, weight){
     const weighed_list = [];
-    
-    //rewrite as forEach
-
     // Loop over weights
-    for (var i = 0; i < weight.length; i++) {
-        var multiples = weight[i] * 100;
+    for (let i = 0; i < weight.length; i++) {
+        const multiples = weight[i] * 100;
          
         // Loop over the list of items
-        for (var j = 0; j < multiples; j++) {
+        for (let j = 0; j < multiples; j++) {
             weighed_list.push(pool[i]);
         }
     }
@@ -27,19 +27,22 @@ const weightedList = function(pool, weight){
     return weighed_list;
 }
 
-var weighed_list = weightedList(pool, weight);
-console.log(weighed_list);
-
+const weighed_list = weightedList(pool, weight);
 
 //Puls random card from the weighted list
 function randoCard (){
     const randoInt = Math.floor(Math.random() * weighed_list.length)
     const getCard = weighed_list[randoInt];
     console.log(randoInt, getCard);
+    //print weighed_list ten times
+    for (let i = 0; i < 10; i++){
+        console.log(getCard);
+    }
 }
 
 randoCard();
 // console.log(randoCard);
+
 
 //make API call to database
 //if no database need to create database
