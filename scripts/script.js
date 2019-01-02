@@ -1,3 +1,7 @@
+//page elements
+const soloyolo = document.getElementById('soloyolo');
+const roll10 = document.getElementById('roll-your-life-away');
+
 //lists
 const pool = [
     'R', 'SR', 'SSR'
@@ -35,12 +39,20 @@ function randoCard (){
     const getCard = weighed_list[randoInt];
     console.log(randoInt, getCard);
     //print weighed_list ten times
-    for (let i = 0; i < 10; i++){
-        console.log(getCard);
-    }
+
 }
 
-randoCard();
+function tenRoll(){
+    roll10.addEventListener('click', function(){
+        //Runs the function get rando card 10 times
+        for (let i = 0; i < 10; i++) randoCard(i);
+        console.log("Is clicked");
+    })
+    
+}
+
+tenRoll();
+
 // console.log(randoCard);
 
 
